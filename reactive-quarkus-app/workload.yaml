@@ -4,7 +4,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: order-producer
-  namespace: default
   labels:
     app: order-producer
     version: 1.0.0
@@ -21,7 +20,7 @@ spec:
     spec:
       containers:
       - name: order-producer
-        image: order-services/order-producer:1.0.0
+        image: 679045741204.dkr.ecr.us-east-1.amazonaws.com/order-producer:1.2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -63,7 +62,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: order-producer-service
-  namespace: default
   labels:
     app: order-producer
 spec:
@@ -81,7 +79,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: order-processor
-  namespace: default
   labels:
     app: order-processor
     version: 1.0.0
@@ -98,7 +95,7 @@ spec:
     spec:
       containers:
       - name: order-processor
-        image: order-services/order-processor:1.0.0
+        image: 679045741204.dkr.ecr.us-east-1.amazonaws.com/order-processor:1.2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8081
