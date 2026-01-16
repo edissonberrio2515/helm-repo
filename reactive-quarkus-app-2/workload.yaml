@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: order-producer-2
-        image: 679045741204.dkr.ecr.us-east-1.amazonaws.com/order-producer-2:1.0
+        image: 679045741204.dkr.ecr.us-east-1.amazonaws.com/order-producer-2:1.9
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -29,6 +29,8 @@ spec:
         env:
         - name: KAFKA_BOOTSTRAP_SERVERS
           value: "kafka-service:9092"
+        #- name: QUARKUS_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+        #  value: "http://your-otlp-endpoint:4317"
         resources:
           requests:
             memory: "128Mi"
